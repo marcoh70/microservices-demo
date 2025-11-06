@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: demo-backend
+  profiles:
+    active: prod
+  config:
+    import: application_prod.yaml
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/demo_backend
+    username: markohp
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+logging:
+  level:
+    org:
+      springframework:
+        security: ${SPRING_SECURITY_LOG_LEVEL:TRACE}
+server:
+  port: 8080
